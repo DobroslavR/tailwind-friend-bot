@@ -17,7 +17,7 @@ const client = new TwitterApi(
 
   const me = await client.currentUser()
 
-  const trackList = ['@tailwindcss', '#tailwind', '#tailwindcss', '#tailwindui', '@tailwindui', '#headlessui']
+  const trackList = ['#tailwind', '#tailwindcss', '#tailwindui', '#headlessui']
 
   const stream = await client.v1.filterStream({
     track: trackList,
