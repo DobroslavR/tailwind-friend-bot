@@ -33,7 +33,9 @@
   "author": "Jakub Synowiec <github@jakubsynowiec.info>",
   "license": "Apache-2.0",
   "dependencies": {
-    "tslib": "~2.3.0"
+    "dotenv": "^10.0.0",
+    "tslib": "~2.3.0",
+    "twitter-api-v2": "^1.1.1"
   },
   "volta": {
     "node": "14.16.1"
