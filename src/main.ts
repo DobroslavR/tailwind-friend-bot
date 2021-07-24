@@ -53,6 +53,7 @@ const client = new TwitterApi(
       if (me.id_str !== user.id_str) {
         await client.v2.follow(me.id_str, user.id_str).catch(err => console.log(err))
         await client.v2.post(`users/${me.id_str}/retweets`, { tweet_id: id_str }).catch(err => console.log(err))
+        await client.v2.like(me.id_str, id_str).catch(err => console.log(err))
       }
     },
   );
