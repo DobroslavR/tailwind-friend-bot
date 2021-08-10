@@ -17,7 +17,7 @@ const client = new TwitterApi(
 
   const me = await client.currentUser()
 
-  const trackList = ['#tailwind', '#tailwindcss', '#tailwindui', '#headlessui']
+  const trackList = ['#tailwindcss', '#tailwindui', '#headlessui', '@tailwindcss']
 
   const stream = await client.v1.filterStream({
     track: trackList,
@@ -48,9 +48,9 @@ const client = new TwitterApi(
     async eventData => {
       console.log('Twitter has sent something:', eventData)
 
-      const { user, id_str } = eventData;
+      const { user, id_str, text } = eventData;
 
-      if (me.id_str !== user.id_str) {
+      if (me.id_str !== user.id_str && trackList.some(x => text.includes(x))) {
         await client.v2.follow(me.id_str, user.id_str).catch(err => console.log(err))
         await client.v2.post(`users/${me.id_str}/retweets`, { tweet_id: id_str }).catch(err => console.log(err))
         await client.v2.like(me.id_str, id_str).catch(err => console.log(err))
